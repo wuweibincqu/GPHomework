@@ -12,8 +12,8 @@ import com.wwb.factory.base.*;
 
 public class OperationFactory {
 
-	public static Operation createOperate(String operate) {
-		Operation oper = null;
+	public static Operation createOperate(Class clazz) throws Exception {
+		/*Operation oper = null;
 		switch (operate) {
 			case "+":
 				oper = new OperationAdd();
@@ -28,6 +28,7 @@ public class OperationFactory {
 				oper = new OpreationDiv();
 				break;
 		}
-		return oper;
+		return oper;*/
+		return (Operation)clazz.newInstance();
 	}
 }

@@ -1,6 +1,7 @@
 package com.wwb.factory.test;
 
 import com.wwb.factory.base.Operation;
+import com.wwb.factory.base.OperationAdd;
 import com.wwb.factory.methodfactory.AddFactory;
 import com.wwb.factory.methodfactory.IFactory;
 import com.wwb.factory.methodfactory.SubFactory;
@@ -24,7 +25,7 @@ public class OperationTest {
 	 **/
 	@Test
 	public void testOperation() throws Exception {
-		Operation operate = OperationFactory.createOperate("+");
+		Operation operate = OperationFactory.createOperate(OperationAdd.class);
 		operate.setNumberA(8);
 		operate.setNumberB(2);
 		double result = operate.getResult();
