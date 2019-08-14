@@ -1,0 +1,34 @@
+package com.wwb.singleton;
+
+import java.io.Serializable;
+
+/**
+ * @Description 防止序列化反序列化破坏单例
+ * @Package: com.wwb.singleton
+ * @ClassName SeriableSingleton
+ * @author: wuwb
+ * @date: 2019/8/13 16:48
+ */
+public class SeriableSingleton implements Serializable {
+
+	//序列化就是说把内存中的状态通过转换成字节码的形式
+	//从而转换一个IO 流，写入到其他地方(可以是磁盘、网络IO)
+	//内存中状态给永久保存下来了
+	//反序列化
+	//讲已经持久化的字节码内容，转换为IO 流
+	//通过IO 流的读取，进而将读取的内容转换为Java 对象
+	//在转换过程中会重新创建对象new
+
+	private static final SeriableSingleton SINGLETON = new SeriableSingleton();
+
+	private SeriableSingleton(){}
+
+	public static SeriableSingleton getInstance() {
+		return SINGLETON;
+	}
+
+	private Object readResolve() {
+		return SINGLETON;
+	}
+
+}
